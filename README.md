@@ -4,17 +4,22 @@ Built with [React Native v0.40](http://facebook.github.io/react-native/releases/
 
 ## Prerequisites
 
-- [node && npm](https://nodejs.org/en/) I recommend using a node verion manager such as
+1. [node && npm](https://nodejs.org/en/): I recommend using a node verion manager such as
 [nvm](https://github.com/creationix/nvm) to make it easy to manage node versions in the future
 
-- [yarn package manager](https://yarnpkg.com/) A better npm client.
+2. [yarn package manager](https://yarnpkg.com/): A better npm client.
 
-- [React Native Tools](http://facebook.github.io/react-native/releases/0.40/docs/getting-started.html#content)
+3. [React Native Tools](http://facebook.github.io/react-native/releases/0.40/docs/getting-started.html#content):
 Follow the getting started guide.
 
-- [ESLint](http://eslint.org/docs/user-guide/integrations) A linting tool for JavaScript.
+4. [ESLint](http://eslint.org/docs/user-guide/integrations): A linting tool for JavaScript.
 You must set your editor of choice up to support eslint. The configuration is already
 included in the project.
+
+5. Have a solid understanding of the git workflow. Its not that bad and proper branching and version control is imperative. Check out these articles.
+
+  - https://www.atlassian.com/git/tutorials/comparing-workflows
+  - https://guides.github.com/introduction/flow/
 
 ## Getting Started
 
