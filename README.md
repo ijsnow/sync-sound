@@ -39,6 +39,8 @@ $ yarn
 ### Running on iOS
 
 ```
+$ cd ~/path/to/sync-sound/SyncSound
+$
 $ # Via the command line
 $ react-native run-ios
 $
@@ -50,5 +52,6 @@ $ # Press run in Xcode
 ### Running on Android
 
 ```
+$ cd ~/path/to/sync-sound/SyncSound
 $ react-native run-android
 ```
