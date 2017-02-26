@@ -1,11 +1,9 @@
-// Import action handlers
+import {REHYDRATE} from 'redux-persist/constants';
 import {
   NAV_NAVIGATE_TO,
   NAV_DID_NAVIGATE_TO,
   NAV_SET_IS_NAVIGATING,
 } from '../actions/navigation';
-
-import {REHYDRATE} from 'redux-persist/constants';
 
 const initialState = {
   navigateToRoute: null,

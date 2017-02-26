@@ -1,25 +1,20 @@
 import React, {PropTypes} from 'react';
 import {
-  Text,
   View,
 } from 'react-native';
 
+import ConnectButton from '../../containers/ConnectButton';
+
 import styles from './styles';
 
-const App = ({appName}) => (
+const App = () => (
   <View style={styles.container}>
-    <Text style={styles.welcome}>
-      {`Welcome to ${appName}`}
-    </Text>
-    <Text style={styles.instructions}>
-      Press Cmd+R to reload,{'\n'}
-      Cmd+D or shake for dev menu
-    </Text>
+    <ConnectButton />
   </View>
 );
 
 App.propTypes = {
-  appName: PropTypes.string.isRequired,
+  //**//
 };
 
 export default App;
