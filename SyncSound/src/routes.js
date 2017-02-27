@@ -1,10 +1,10 @@
-import Demo from './containers/Demo';
+import DeviceSearchPage from './components/DeviceSearchPage';
 
 export default function getRoutes(isLoggedIn) {
   return {
-    Landing: {
-      id: 'Landing',
-      component: Demo,
+    DeviceSearchPage: {
+      id: 'DeviceSearchPage',
+      component: DeviceSearchPage,
       isInitial: true,
       isLoggedIn,
     },

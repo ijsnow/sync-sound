@@ -14,7 +14,7 @@ const ConnectButton = ({
     onPress={handlePress}
     isDisabled={isFetchingConnections}
   >
-    {`Connect${isFetchingConnections ? '...' : ''}`}
+    {isFetchingConnections ? 'Searching...' : 'Find Devices'}
   </Button>
 );
 

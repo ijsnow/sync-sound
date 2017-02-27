@@ -4,11 +4,14 @@ export {
   CONNECTION_FETCH,
   CONNECTION_FETCHING,
   CONNECTION_FETCHED,
+  CONNECTION_CONNECT_TO_DEVICE,
 } from './actions';
 
 export const initialState = {
   isFetching: false,
-  connections: [],
+  connectableDevices: [],
+  connectedDevices: [],
+  pendingDevices: {}, // map of device names
 };
 
 export const isConnectionAction = action => !!(actions[action]);
@@ -20,7 +23,7 @@ export default function connectionMiddleware({dispatch, getState}) {
     if (handler) {
       const state = getState().connections || initialState;
 
-      handler(dispatch, state);
+      handler(dispatch, state, action.payload);
 
       return null;
     }

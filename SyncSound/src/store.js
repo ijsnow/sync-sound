@@ -10,7 +10,7 @@ import connectionMiddleware from './middleware/connections';
 import rootReducer from './reducers';
 
 // Uncomment to clear the AsyncStorage store of the redux store
-// AsyncStorage.clear();
+AsyncStorage.clear();
 
 const middleware = applyMiddleware(
   ReduxThunk,

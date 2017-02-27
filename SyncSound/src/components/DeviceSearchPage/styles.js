@@ -6,18 +6,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: colors.light,
+    paddingTop: 20,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  section: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  list: {
+    flex: 3,
+  },
+  button: {
+    flex: 1,
   },
 });
 
