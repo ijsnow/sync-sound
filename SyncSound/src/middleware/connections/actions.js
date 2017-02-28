@@ -33,11 +33,7 @@ function fetchConnections(dispatch) {
     type: CONNECTION_FETCHING,
   });
 
-  // Will replace this with the actual function call to fetch connections
-  setTimeout(() => dispatch(fetchedConnections([{
-    name: 'Grady\'s phone',
-    isConnected: false,
-  }])), 1000);
+  console.log(ConnectionManager);
 
   ConnectionManager
     .fetchConnectableDevices(handleFetchDevicesRes.bind(null, dispatch));
