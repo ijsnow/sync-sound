@@ -42,6 +42,7 @@
 		2E2D10ED9B744969AC9B9932 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919BEACD5B004B70996F62C4 /* Entypo.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6B0C426F1E6397130094D30D /* ConnectionManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C426E1E6397130094D30D /* ConnectionManagerBridge.m */; };
+		6B5E24E31E64FB3E0027BA2D /* JSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E24E21E64FB3E0027BA2D /* JSResponse.swift */; };
 		6BB3F1671E63951B005BAF83 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3F1661E63951B005BAF83 /* ConnectionManager.swift */; };
 		80D3B9D28DD044CF864C4B70 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADC020062DB14EA390386AA4 /* FontAwesome.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -279,6 +280,7 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		66A583F2406E4B7DB5C57872 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		6B0C426E1E6397130094D30D /* ConnectionManagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManagerBridge.m; sourceTree = "<group>"; };
+		6B5E24E21E64FB3E0027BA2D /* JSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSResponse.swift; sourceTree = "<group>"; };
 		6BB3F1661E63951B005BAF83 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		6BB3F1681E639560005BAF83 /* SyncSound-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SyncSound-Bridging-Header.h"; sourceTree = "<group>"; };
 		768304BAE38B47CC8CF64C8A /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 		13B07FAE1A68108700A75B9A /* SyncSound */ = {
 			isa = PBXGroup;
 			children = (
+				6B5E24E11E64FB1B0027BA2D /* Utilities */,
 				6BB3F1401E6391FD005BAF83 /* ConnectionManager */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -468,6 +471,14 @@
 				6B0C42B11E63B1560094D30D /* libRNVectorIcons.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6B5E24E11E64FB1B0027BA2D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6B5E24E21E64FB3E0027BA2D /* JSResponse.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		6BB3F1401E6391FD005BAF83 /* ConnectionManager */ = {
@@ -1004,6 +1015,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B0C426F1E6397130094D30D /* ConnectionManagerBridge.m in Sources */,
+				6B5E24E31E64FB3E0027BA2D /* JSResponse.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				6BB3F1671E63951B005BAF83 /* ConnectionManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,

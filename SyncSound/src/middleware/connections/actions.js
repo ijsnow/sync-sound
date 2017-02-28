@@ -1,4 +1,4 @@
-import {NativeModules} from 'react-native';
+import {NativeModules, Alert} from 'react-native';
 
 const {ConnectionManager} = NativeModules;
 
@@ -7,12 +7,25 @@ export const CONNECTION_FETCHING = 'CONNECTION_FETCHING';
 export const CONNECTION_FETCHED = 'CONNECTION_FETCHED';
 export const CONNECTION_CONNECT_TO_DEVICE = 'CONNECTION_CONNECT_TO_DEVICE';
 export const CONNECTION_CONNECTING = 'CONNECTION_CONNECTING';
+export const CONNECTION_CONNECTED = 'CONNECTION_CONNECTED';
+export const CONNECTION_ATTEMPT_FAILED = 'CONNECTION_ATTEMPT_FAILED';
 
 function fetchedConnections(connections) {
   return {
     type: CONNECTION_FETCHED,
     payload: connections,
   };
+}
+
+function handleFetchDevicesRes(dispatch, error, devices) {
+  if (error) {
+    // Do some kind of error handling
+    return;
+  }
+
+  const processedDevices = devices.map(dev => ({name: dev, isConnected: false}));
+
+  dispatch(fetchedConnections(processedDevices));
 }
 
 function fetchConnections(dispatch) {
@@ -24,9 +37,30 @@ function fetchConnections(dispatch) {
   setTimeout(() => dispatch(fetchedConnections([{
     name: 'Grady\'s phone',
     isConnected: false,
-  }])), 2000);
+  }])), 1000);
 
-  ConnectionManager.fetchConnectableDevices();
+  ConnectionManager
+    .fetchConnectableDevices(handleFetchDevicesRes.bind(null, dispatch));
+}
+
+function handleConnectToDeviceRes(dispatch, error, {success, name}) {
+  if (error || !success) {
+    Alert.alert('Uh Oh!', error);
+
+    dispatch({
+      type: CONNECTION_ATTEMPT_FAILED,
+      payload: name,
+    });
+
+    return;
+  }
+
+  if (success) {
+    dispatch({
+      type: CONNECTION_CONNECTED,
+      payload: name,
+    });
+  }
 }
 
 function connectToDevice(dispatch, state, device) {
@@ -35,7 +69,8 @@ function connectToDevice(dispatch, state, device) {
     payload: device.name,
   });
 
-  // ConnectionManager.connectToDevice(device);
+  ConnectionManager
+    .connectToDevice(device.name, handleConnectToDeviceRes.bind(null, dispatch));
 }
 
 export default {
