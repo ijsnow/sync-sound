@@ -23,7 +23,7 @@ function handleFetchDevicesRes(dispatch, error, devices) {
     return;
   }
 
-  const processedDevices = devices.map(dev => ({name: dev, isConnected: false}));
+  const processedDevices = devices.map(name => ({name, isConnected: false}));
 
   dispatch(fetchedConnections(processedDevices));
 }
@@ -32,8 +32,6 @@ function fetchConnections(dispatch) {
   dispatch({
     type: CONNECTION_FETCHING,
   });
-
-  console.log(ConnectionManager);
 
   ConnectionManager
     .fetchConnectableDevices(handleFetchDevicesRes.bind(null, dispatch));

@@ -24,7 +24,13 @@ export default function getStore(data = {}) {
     data,
     compose(middleware, autoRehydrate()),
   );
-  persistStore(store, {storage: AsyncStorage});
+  persistStore(store, {
+    storage: AsyncStorage,
+    blacklist: [
+      'connections',
+      'navigation',
+    ],
+  });
 
   return store;
 }

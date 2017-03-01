@@ -1,9 +1,9 @@
+import {REHYDRATE} from 'redux-persist/constants';
+
 // Import action handlers
 import {
 
 } from '../actions/device';
-
-import {REHYDRATE} from 'redux-persist/constants';
 
 const initialState = {
 
