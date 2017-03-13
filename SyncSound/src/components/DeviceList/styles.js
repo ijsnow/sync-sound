@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   deviceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 5,
     marginBottom: 5,
     marginLeft: 10,
@@ -29,6 +31,16 @@ const styles = StyleSheet.create({
   },
   deviceText: {
     color: colors.darkGray,
+  },
+  activity: {
+
+  },
+  connected: {
+    color: colors.green,
+  },
+  connect: {
+    color: colors.indigo,
+    fontSize: 12,
   },
 });
 

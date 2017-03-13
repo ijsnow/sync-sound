@@ -7,13 +7,15 @@
 //
 
 #import <React/RCTBridgeModule.h>
+#import "AppDelegate.h"
 
 @interface RCT_EXTERN_MODULE(ConnectionManager, NSObject)
 
-RCT_EXTERN_METHOD(fetchConnectableDevices:(RCTResponseSenderBlock) callback)
+RCT_EXTERN_METHOD(findPeers:(RCTResponseSenderBlock) callback)
+RCT_EXTERN_METHOD(stopFinding:(RCTResponseSenderBlock) callback)
 
-RCT_EXTERN_METHOD(connectToDevice:
-                  (NSString *)name
-                  callback: (RCTResponseSenderBlock)callback)
+RCT_EXTERN_METHOD(fetchPeers:(RCTResponseSenderBlock) callback)
+
+RCT_EXTERN_METHOD(connectToPeer:(NSString *)name)
 
 @end
