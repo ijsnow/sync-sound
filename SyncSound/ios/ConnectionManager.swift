@@ -160,7 +160,8 @@ class ConnectionManager:  NSObject,
                   withContext context: Data?,
                   invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
     print("Invitation received")
-    invitationHandler(true, session)
+    let associateSession = MCSession(peer: peer, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+    invitationHandler(true, associateSession)
   }
   
   // Exposed module methods
