@@ -198,15 +198,6 @@ class ConnectionManager:  NSObject,
     callback(response.toRes())
   }
   
-  @objc func fetchPeers(_ callback: RCTResponseSenderBlock) -> Void {
-    NSLog("Fetch P2P devices")
-    let response = JSResponse()
-    
-    response.response = ["Grady's phone"] as AnyObject?
-    
-    callback(response.toRes())
-  }
-  
   @objc func connectToPeer(_ name: String) -> Void {
     NSLog("Connect to %@", name)
     
@@ -214,7 +205,7 @@ class ConnectionManager:  NSObject,
     
     if let peerToConnect = p {
       session.nearbyConnectionData(forPeer: peerToConnect) { data, error in
-        guard error != nil else {
+        guard error == nil else {
           print(error as Any)
           return
         }
