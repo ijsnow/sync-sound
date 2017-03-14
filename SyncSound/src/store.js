@@ -14,8 +14,8 @@ import rootReducer from './reducers';
 
 const middleware = applyMiddleware(
   ReduxThunk,
-  connectionMiddleware,
-  createLogger(),
+  connectionMiddleware(),
+  // createLogger(),
 );
 
 export default function getStore(data = {}) {

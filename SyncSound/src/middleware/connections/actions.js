@@ -1,4 +1,7 @@
-import {NativeModules, Alert} from 'react-native';
+import {
+  NativeModules,
+  Alert,
+} from 'react-native';
 
 const {ConnectionManager} = NativeModules;
 
@@ -10,64 +13,71 @@ export const CONNECTION_CONNECTING = 'CONNECTION_CONNECTING';
 export const CONNECTION_CONNECTED = 'CONNECTION_CONNECTED';
 export const CONNECTION_ATTEMPT_FAILED = 'CONNECTION_ATTEMPT_FAILED';
 
-function fetchedConnections(connections) {
-  return {
-    type: CONNECTION_FETCHED,
-    payload: connections,
-  };
-}
+export const CONNECTION_FIND_PEERS = 'CONNECTION_FIND_PEERS';
+export const CONNECTION_STOP_FINDING = 'CONNECTION_STOP_FINDING';
+export const CONNECTION_PEER_FOUND = 'CONNECTION_PEER_FOUND';
+export const CONNECTION_PEER_LOST = 'CONNECTION_PEER_LOST';
+export const CONNECTION_CONNECT_TO_PEER = 'CONNECTION_CONNECT_TO_PEER';
+export const CONNECTION_PEER_CONNECTING = 'CONNECTION_PEER_CONNECTING';
+export const CONNECTION_PEER_CONNECTED = 'CONNECTION_PEER_CONNECTED';
 
-function handleFetchDevicesRes(dispatch, error, devices) {
-  if (error) {
-    // Do some kind of error handling
-    return;
-  }
-
-  const processedDevices = devices.map(name => ({name, isConnected: false}));
-
-  dispatch(fetchedConnections(processedDevices));
-}
-
-function fetchConnections(dispatch) {
+export function handleFoundPeer(dispatch, {name, info}) {
   dispatch({
-    type: CONNECTION_FETCHING,
+    type: CONNECTION_PEER_FOUND,
+    payload: {
+      name,
+      info,
+      isPending: false,
+      isConnected: false,
+    },
   });
-
-  ConnectionManager
-    .fetchConnectableDevices(handleFetchDevicesRes.bind(null, dispatch));
 }
 
-function handleConnectToDeviceRes(dispatch, error, {success, name}) {
-  if (error || !success) {
-    Alert.alert('Uh Oh!', error);
-
-    dispatch({
-      type: CONNECTION_ATTEMPT_FAILED,
-      payload: name,
-    });
-
-    return;
-  }
-
-  if (success) {
-    dispatch({
-      type: CONNECTION_CONNECTED,
-      payload: name,
-    });
-  }
-}
-
-function connectToDevice(dispatch, state, device) {
+export function handleLostPeer(dispatch, {name}) {
   dispatch({
-    type: CONNECTION_CONNECTING,
-    payload: device.name,
+    type: CONNECTION_PEER_LOST,
+    payload: {name},
   });
+}
 
+export function handlePeerConnecting(dispatch, {name}) {
+  dispatch({
+    type: CONNECTION_PEER_CONNECTING,
+    payload: {name},
+  });
+}
+
+export function handlePeerConnected(dispatch, {name}) {
+  dispatch({
+    type: CONNECTION_PEER_CONNECTED,
+    payload: {name},
+  });
+}
+
+function findPeers(dispatch, state, action, next) {
   ConnectionManager
-    .connectToDevice(device.name, handleConnectToDeviceRes.bind(null, dispatch));
+    .findPeers((error, {success}) => {
+      if (success) {
+        next(action);
+      }
+    });
+}
+
+function stopFinding(dispatch, state, action, next) {
+  ConnectionManager
+    .stopFinding((error, {success}) => {
+      if (success) {
+        next(action);
+      }
+    });
+}
+
+function connectToPeer(dispatch, state, {payload}) {
+  ConnectionManager.connectToPeer(payload.name);
 }
 
 export default {
-  [CONNECTION_FETCH]: fetchConnections,
-  [CONNECTION_CONNECT_TO_DEVICE]: connectToDevice,
+  [CONNECTION_FIND_PEERS]: findPeers,
+  [CONNECTION_STOP_FINDING]: stopFinding,
+  [CONNECTION_CONNECT_TO_PEER]: connectToPeer,
 };

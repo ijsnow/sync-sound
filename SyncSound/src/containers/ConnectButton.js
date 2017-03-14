@@ -2,24 +2,26 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {fetchConnections} from '../actions/connections';
+import {findPeers, stopFinding} from '../actions/connections';
 
 import Button from '../components/Button';
 
 const ConnectButton = ({
-  handlePress,
+  handleFindPeers,
+  handleStopFinding,
   isFetchingConnections,
 }) => (
   <Button
-    onPress={handlePress}
-    isDisabled={isFetchingConnections}
+    onPress={isFetchingConnections ? handleStopFinding : handleFindPeers}
+    isShowingActivityIndicator={isFetchingConnections}
   >
-    {isFetchingConnections ? 'Searching...' : 'Find Devices'}
+    {isFetchingConnections ? 'Stop Searching' : 'Find Devices'}
   </Button>
 );
 
 ConnectButton.propTypes = {
-  handlePress: PropTypes.func.isRequired,
+  handleFindPeers: PropTypes.func.isRequired,
+  handleStopFinding: PropTypes.func.isRequired,
   isFetchingConnections: PropTypes.bool.isRequired,
 };
 
@@ -31,7 +33,8 @@ function mapStateToProps({connections}) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    handlePress: fetchConnections,
+    handleFindPeers: findPeers,
+    handleStopFinding: stopFinding,
   }, dispatch);
 }
 

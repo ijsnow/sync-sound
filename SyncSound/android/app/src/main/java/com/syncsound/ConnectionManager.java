@@ -24,7 +24,7 @@ public class ConnectionManager extends ReactContextBaseJavaModule{
     }
 
     @ReactMethod
-    public void fetchConnectableDevices(Callback callback) {
+    public void fetchPeers(Callback callback) {
         Response res = new Response(callback);
 
         res.list = new WritableNativeArray();
@@ -46,7 +46,7 @@ public class ConnectionManager extends ReactContextBaseJavaModule{
     }
 
     @ReactMethod
-    public void connectToDevice(String name, Callback callback) {
+    public void connectToPeer(String name, Callback callback) {
         Response res = new Response(callback);
 
         res.error = "This is an error";

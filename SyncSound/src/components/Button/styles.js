@@ -5,6 +5,8 @@ import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 25,
@@ -26,6 +28,9 @@ const styles = StyleSheet.create({
   },
   textDisabled: {
     color: colors.gray,
+  },
+  activity: {
+    marginRight: 10,
   },
 });
 

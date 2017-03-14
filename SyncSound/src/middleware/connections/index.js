@@ -1,10 +1,18 @@
-import actions from './actions';
+import actions, {
+  CONNECTION_FIND_PEERS,
+  CONNECTION_STOP_FINDING,
+} from './actions';
+
+import Listeners from './listeners';
 
 export {
-  CONNECTION_FETCH,
-  CONNECTION_FETCHING,
-  CONNECTION_FETCHED,
-  CONNECTION_CONNECT_TO_DEVICE,
+  CONNECTION_FIND_PEERS,
+  CONNECTION_STOP_FINDING,
+  CONNECTION_PEER_FOUND,
+  CONNECTION_PEER_LOST,
+  CONNECTION_PEER_CONNECTING,
+  CONNECTION_PEER_CONNECTED,
+  CONNECTION_CONNECT_TO_PEER,
 } from './actions';
 
 export const initialState = {
@@ -16,18 +24,28 @@ export const initialState = {
 
 export const isConnectionAction = action => !!(actions[action]);
 
-export default function connectionMiddleware({dispatch, getState}) {
-  return next => (action) => {
-    const handler = actions[action.type];
+export default function createMiddleware() {
+  const listeners = new Listeners();
 
-    if (handler) {
-      const state = getState().connections || initialState;
+  return function connectionMiddleware({dispatch, getState}) {
+    return next => (action) => {
+      const handler = actions[action.type];
 
-      handler(dispatch, state, action.payload);
+      if (action.type === CONNECTION_FIND_PEERS) {
+        listeners.start(dispatch);
+      } else if (action.type === CONNECTION_STOP_FINDING) {
+        listeners.stop();
+      }
 
-      return null;
-    }
+      if (handler) {
+        const state = getState().connections || initialState;
 
-    return next(action);
+        handler(dispatch, state, action, next);
+
+        return null;
+      }
+
+      return next(action);
+    };
   };
 }

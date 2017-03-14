@@ -2,24 +2,26 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {connectToDevice} from '../actions/connections';
+import {connectToPeer} from '../actions/connections';
 
-import DeviceList from '../components/DeviceList';
+import DeviceListComponent from '../components/DeviceList';
 
-const ConnectableDeviceList = ({
+const DeviceList = ({
   devices,
   handleDevicePress,
 }) => (
-  <DeviceList
+  <DeviceListComponent
     devices={devices}
     onDevicePress={handleDevicePress}
   />
 );
 
-ConnectableDeviceList.propTypes = {
+DeviceList.propTypes = {
   handleDevicePress: PropTypes.func.isRequired,
   devices: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequires,
+    name: PropTypes.string.isRequired,
+    isConnected: PropTypes.bool.isRequired,
+    isPending: PropTypes.bool.isRequired,
   })).isRequired,
 };
 
@@ -31,8 +33,8 @@ function mapStateToProps({connections}) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    handleDevicePress: connectToDevice,
+    handleDevicePress: connectToPeer,
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConnectableDeviceList);
+export default connect(mapStateToProps, mapDispatchToProps)(DeviceList);

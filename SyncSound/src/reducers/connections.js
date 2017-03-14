@@ -1,36 +1,47 @@
+import {uniqBy} from 'lodash/fp';
+
 import {REHYDRATE} from 'redux-persist/constants';
 
 import {
   initialState,
-  CONNECTION_FETCHING,
-  CONNECTION_FETCHED,
-  CONNECTION_CONNECTING,
-  CONNECTION_CONNECTED,
+
+  CONNECTION_FIND_PEERS,
+  CONNECTION_PEER_FOUND,
+  CONNECTION_PEER_LOST,
+  CONNECTION_STOP_FINDING,
+  CONNECTION_PEER_CONNECTING,
+  CONNECTION_PEER_CONNECTED,
 } from '../middleware/connections';
 
+const uniqByName = uniqBy('name');
+
 const REDUCER_ACTION_HANDLERS = {
-  [CONNECTION_FETCHING]: state => ({
+  [CONNECTION_FIND_PEERS]: state => ({
     ...state,
     isFetching: true,
   }),
-  [CONNECTION_FETCHED]: (state, {payload}) => ({
+  [CONNECTION_STOP_FINDING]: state => ({
     ...state,
     isFetching: false,
-    connectableDevices: payload,
   }),
-  [CONNECTION_CONNECTING]: (state, {payload}) => ({
+  [CONNECTION_PEER_FOUND]: (state, {payload}) => ({
     ...state,
-    pendingDevices: {
-      ...state.pendingDevices,
-      [payload]: true,
-    },
+    connectableDevices: uniqByName([].concat(state.connectableDevices, [payload])),
   }),
-  [CONNECTION_CONNECTED]: (state, {payload}) => ({
+  [CONNECTION_PEER_LOST]: (state, {payload}) => ({
     ...state,
-    pendingDevices: {
-      ...state.pendingDevices,
-      [payload]: false,
-    },
+    connectableDevices: state.connectableDevices
+      .filter(d => d.name !== payload.name),
+  }),
+  [CONNECTION_PEER_CONNECTING]: (state, {payload}) => ({
+    ...state,
+    connectableDevices: state.connectableDevices
+      .map(d => (d.name === payload.name ? {...d, isPending: true} : d)),
+  }),
+  [CONNECTION_PEER_CONNECTED]: (state, {payload}) => ({
+    ...state,
+    connectableDevices: state.connectableDevices
+      .map(d => (d.name === payload.name ? {...d, isPending: false, isConnected: true} : d)),
   }),
   [REHYDRATE]: () => initialState,
 };
