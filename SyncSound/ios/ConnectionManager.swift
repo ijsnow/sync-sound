@@ -160,7 +160,7 @@ class ConnectionManager:  NSObject,
                   withContext context: Data?,
                   invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
     print("Invitation received")
-    let associateSession = MCSession(peer: peer, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+    let associateSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
     invitationHandler(true, associateSession)
   }
   
