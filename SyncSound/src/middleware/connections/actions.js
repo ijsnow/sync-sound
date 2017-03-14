@@ -11,7 +11,6 @@ export const CONNECTION_FETCHED = 'CONNECTION_FETCHED';
 export const CONNECTION_CONNECT_TO_DEVICE = 'CONNECTION_CONNECT_TO_DEVICE';
 export const CONNECTION_CONNECTING = 'CONNECTION_CONNECTING';
 export const CONNECTION_CONNECTED = 'CONNECTION_CONNECTED';
-export const CONNECTION_ATTEMPT_FAILED = 'CONNECTION_ATTEMPT_FAILED';
 
 export const CONNECTION_FIND_PEERS = 'CONNECTION_FIND_PEERS';
 export const CONNECTION_STOP_FINDING = 'CONNECTION_STOP_FINDING';
@@ -20,6 +19,7 @@ export const CONNECTION_PEER_LOST = 'CONNECTION_PEER_LOST';
 export const CONNECTION_CONNECT_TO_PEER = 'CONNECTION_CONNECT_TO_PEER';
 export const CONNECTION_PEER_CONNECTING = 'CONNECTION_PEER_CONNECTING';
 export const CONNECTION_PEER_CONNECTED = 'CONNECTION_PEER_CONNECTED';
+export const CONNECTION_ATTEMPT_FAILED = 'CONNECTION_ATTEMPT_FAILED';
 
 export function handleFoundPeer(dispatch, {name, info}) {
   dispatch({
@@ -50,6 +50,13 @@ export function handlePeerConnecting(dispatch, {name}) {
 export function handlePeerConnected(dispatch, {name}) {
   dispatch({
     type: CONNECTION_PEER_CONNECTED,
+    payload: {name},
+  });
+}
+
+export function handleConnectionFailed(dispatch, {name}) {
+  dispatch({
+    type: CONNECTION_ATTEMPT_FAILED,
     payload: {name},
   });
 }

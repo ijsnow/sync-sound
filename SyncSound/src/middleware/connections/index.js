@@ -13,6 +13,7 @@ export {
   CONNECTION_PEER_CONNECTING,
   CONNECTION_PEER_CONNECTED,
   CONNECTION_CONNECT_TO_PEER,
+  CONNECTION_ATTEMPT_FAILED,
 } from './actions';
 
 export const initialState = {
