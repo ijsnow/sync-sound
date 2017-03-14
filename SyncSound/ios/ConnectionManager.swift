@@ -86,7 +86,8 @@ class ConnectionManager:  NSObject,
       eventEmitter.dispatch(event: eventEmitter.events.PeerConnecting, data: p as AnyObject)
       
     default:
-      print("Did not connect to session: \(session)")
+      print("Did not connect to session: \(peerID.displayName) \(session)")
+      
       let p: NSDictionary = [
         "name": peerID.displayName,
       ]
@@ -162,6 +163,7 @@ class ConnectionManager:  NSObject,
                   didReceiveInvitationFromPeer peerID: MCPeerID,
                   withContext context: Data?,
                   invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
+    print("Invitation received")
     invitationHandler(true, session)
   }
   
@@ -214,7 +216,7 @@ class ConnectionManager:  NSObject,
     
     if let peerToConnect = p {
       session.nearbyConnectionData(forPeer: peerToConnect) { data, error in
-        guard error != nil else {
+        guard error == nil else {
           print(error as Any)
           return
         }

@@ -5,6 +5,7 @@ import {
   handleLostPeer,
   handlePeerConnecting,
   handlePeerConnected,
+  handleConnectionFailed,
 } from './actions';
 
 class Listeners {
@@ -23,6 +24,8 @@ class Listeners {
       .addListener('PeerConnecting', handlePeerConnecting.bind(null, dispatch));
     this.peerConnectedListener = NativeAppEventEmitter
       .addListener('PeerConnected', handlePeerConnected.bind(null, dispatch));
+    this.peerConnectionFailedListener = NativeAppEventEmitter
+      .addListener('PeerConnectionFailed', handleConnectionFailed.bind(null, dispatch));
   }
 
   stop() {
@@ -40,6 +43,10 @@ class Listeners {
 
     if (this.peerConnectedListener) {
       this.peerConnectedListener.remove();
+    }
+
+    if (this.peerConnectionFailedListener) {
+      this.peerConnectionFailedListener.remove();
     }
   }
 }
