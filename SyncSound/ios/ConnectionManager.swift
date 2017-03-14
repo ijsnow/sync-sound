@@ -35,8 +35,6 @@ class ConnectionManager:  NSObject,
   var browser: MCNearbyServiceBrowser!
   var isBrowsing: Bool = false
   
-  var browserViewController: MCBrowserViewController!
-  
   var advertiser: MCNearbyServiceAdvertiser!
   var isAdvertising: Bool = false
   
@@ -59,8 +57,6 @@ class ConnectionManager:  NSObject,
     
     advertiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: nil, serviceType: SERVICE_TYPE)
     advertiser.delegate = self
-    
-    browserViewController = MCBrowserViewController(browser: browser, session: session)
   }
   
   // Remote peer changed state
@@ -211,9 +207,8 @@ class ConnectionManager:  NSObject,
           print(error as Any)
           return
         }
-        
-        self.session.connectPeer(peerToConnect, withNearbyConnectionData: data)
       }
+      browser.invitePeer(peerToConnect, to: session, withContext: nil, timeout: 30)
     } else {
       print("No peer found by \(name)")
     }
