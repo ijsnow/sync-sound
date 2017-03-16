@@ -96,6 +96,7 @@ class ConnectionManager:  NSObject,
   func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
     let message = String(data: data, encoding: .utf8)
     print("MESSAGE: \(message)")
+    eventEmitter.dispatch(event: eventEmitter.events.MessageReceived, data: message as AnyObject)
   }
   
   // Received a byte stream from remote peer
@@ -160,8 +161,7 @@ class ConnectionManager:  NSObject,
                   withContext context: Data?,
                   invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
     print("Invitation received")
-    let associateSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-    invitationHandler(true, associateSession)
+    invitationHandler(true, session)
   }
   
   // Exposed module methods
