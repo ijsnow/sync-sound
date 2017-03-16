@@ -61,7 +61,7 @@ class ConnectionManager:  NSObject,
   
   // Remote peer changed state
   func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
-    switch state{
+    switch state {
     case MCSessionState.connected:
       print("Connected to session: \(session)")
       delegate?.connectedWithPeer(peerID: peerID)
@@ -71,6 +71,12 @@ class ConnectionManager:  NSObject,
       ]
       
       eventEmitter.dispatch(event: eventEmitter.events.PeerConnected, data: p as AnyObject)
+      
+      if sendData(dictionaryWithData: ["message": "hello gredy"], toPeer: peerID) {
+        print("Message sent")
+      } else {
+        print("Message failed to send")
+      }
       
     case MCSessionState.connecting:
       print("Connecting to session: \(session)")
@@ -93,9 +99,10 @@ class ConnectionManager:  NSObject,
   }
   
   // Received data from remote peer
-  func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
-    let message = String(data: data, encoding: .utf8)
-    print("MESSAGE: \(message)")
+  func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+    if let message = String(data: data, encoding: .utf8) {
+      print("MESSAGE: \(message)")
+    }
   }
   
   // Received a byte stream from remote peer
@@ -108,7 +115,8 @@ class ConnectionManager:  NSObject,
     
   }
   
-  // Finished receiving a resource from remote peer and saved the content in a temporary location - the app is responsible for moving the file to a permanent location within its sandbox
+  // Finished receiving a resource from remote peer and saved the content in a temporary location -
+  // the app is responsible for moving the file to a permanent location within its sandbox
   func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL, withError error: Error?) {
     
   }
@@ -156,12 +164,27 @@ class ConnectionManager:  NSObject,
   // with YES and a valid session to connect the inviting peer to the session.
   func advertiser(_
     advertiser: MCNearbyServiceAdvertiser,
-                  didReceiveInvitationFromPeer peerID: MCPeerID,
-                  withContext context: Data?,
-                  invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
-    print("Invitation received")
-    let associateSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-    invitationHandler(true, associateSession)
+    didReceiveInvitationFromPeer peerID: MCPeerID,
+    withContext context: Data?,
+    invitationHandler: @escaping ((Bool, MCSession?) -> Void))
+  {
+    invitationHandler(true, session)
+  }
+  
+  func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID) -> Bool {
+    //let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
+
+    do {
+      if let message = "Hello Grady you dirty mother fucker".data(using: .utf8) {
+        try session.send(message, toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
+      }
+    }
+    catch  {
+      print("Send failed")
+      return false
+    }
+    
+    return true
   }
   
   // Exposed module methods
