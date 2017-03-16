@@ -94,9 +94,9 @@ class ConnectionManager:  NSObject,
   
   // Received data from remote peer
   func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-    if let message = String(data: data, encoding: .utf8) {
-      print("MESSAGE: \(message)")
-    }
+    let message = String(data: data, encoding: .utf8)
+    print("MESSAGE: \(message)")
+    eventEmitter.dispatch(event: eventEmitter.events.MessageReceived, data: message as AnyObject)
   }
   
   // Received a byte stream from remote peer
@@ -164,10 +164,8 @@ class ConnectionManager:  NSObject,
   {
     invitationHandler(true, session)
   }
-  
+                  
   func sendData(message: String) -> Bool {
-    //let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
-
     do {
       if let bytes = message.data(using: .utf8) {
         try session.send(bytes, toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
@@ -180,7 +178,7 @@ class ConnectionManager:  NSObject,
     
     return true
   }
-  
+
   // Exposed module methods
   @objc func findPeers(_ callback: RCTResponseSenderBlock) -> Void {
     if !isBrowsing {

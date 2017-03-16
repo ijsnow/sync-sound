@@ -14,6 +14,7 @@ struct Events {
   static let PeerConnecting = "PeerConnecting"
   static let PeerConnected = "PeerConnected"
   static let PeerConnectionFailed = "PeerConnectionFailed"
+  static let MessageReceived = "MessageReceived"
 }
 
 @objc(EventEmitter)
