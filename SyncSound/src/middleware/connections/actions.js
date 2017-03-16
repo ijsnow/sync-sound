@@ -67,6 +67,13 @@ export function handleConnectionFailed(dispatch, {name}) {
   });
 }
 
+export function handleMessageReceived(dispatch, {name, message}) {
+  AlertIOS.alert(
+    `${name} says`,
+    message,
+  );
+}
+
 function findPeers(dispatch, state, action, next) {
   ConnectionManager
     .findPeers((error, {success}) => {

@@ -94,9 +94,16 @@ class ConnectionManager:  NSObject,
   
   // Received data from remote peer
   func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-    let message = String(data: data, encoding: .utf8)
-    print("MESSAGE: \(message)")
-    eventEmitter.dispatch(event: eventEmitter.events.MessageReceived, data: message as AnyObject)
+    if let message = String(data: data, encoding: .utf8) {
+      print("MESSAGE: \(message)")
+      
+      let p: NSDictionary = [
+        "name": peerID.displayName,
+        "message": message
+      ]
+      
+      eventEmitter.dispatch(event: eventEmitter.events.MessageReceived, data: p as AnyObject)
+    }
   }
   
   // Received a byte stream from remote peer
