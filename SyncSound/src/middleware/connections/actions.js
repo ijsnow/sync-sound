@@ -1,6 +1,6 @@
 import {
   NativeModules,
-  Alert,
+  AlertIOS,
 } from 'react-native';
 
 const {ConnectionManager} = NativeModules;
@@ -48,6 +48,12 @@ export function handlePeerConnecting(dispatch, {name}) {
 }
 
 export function handlePeerConnected(dispatch, {name}) {
+  AlertIOS.prompt(
+    'Enter message',
+    null,
+    text => ConnectionManager.sendMessageToPeer(text),
+  );
+
   dispatch({
     type: CONNECTION_PEER_CONNECTED,
     payload: {name},

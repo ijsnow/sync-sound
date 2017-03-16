@@ -72,12 +72,6 @@ class ConnectionManager:  NSObject,
       
       eventEmitter.dispatch(event: eventEmitter.events.PeerConnected, data: p as AnyObject)
       
-      if sendData(dictionaryWithData: ["message": "hello gredy"], toPeer: peerID) {
-        print("Message sent")
-      } else {
-        print("Message failed to send")
-      }
-      
     case MCSessionState.connecting:
       print("Connecting to session: \(session)")
       
@@ -171,12 +165,12 @@ class ConnectionManager:  NSObject,
     invitationHandler(true, session)
   }
   
-  func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID) -> Bool {
+  func sendData(message: String) -> Bool {
     //let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
 
     do {
-      if let message = "Hello Grady you dirty mother fucker".data(using: .utf8) {
-        try session.send(message, toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
+      if let bytes = message.data(using: .utf8) {
+        try session.send(bytes, toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
       }
     }
     catch  {
@@ -235,6 +229,14 @@ class ConnectionManager:  NSObject,
       browser.invitePeer(peerToConnect, to: session, withContext: nil, timeout: 30)
     } else {
       print("No peer found by \(name)")
+    }
+  }
+  
+  @objc func sendMessageToPeer(_ message: String) -> Void {
+    if sendData(message: message) {
+      print("Message sent")
+    } else {
+      print("Message failed to send")
     }
   }
   

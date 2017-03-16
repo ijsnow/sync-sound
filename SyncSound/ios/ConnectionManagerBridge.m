@@ -15,5 +15,6 @@ RCT_EXTERN_METHOD(findPeers:(RCTResponseSenderBlock) callback)
 RCT_EXTERN_METHOD(stopFinding:(RCTResponseSenderBlock) callback)
 
 RCT_EXTERN_METHOD(connectToPeer:(NSString *)name)
+RCT_EXTERN_METHOD(sendMessageToPeer:(NSString *)name)
 
 @end

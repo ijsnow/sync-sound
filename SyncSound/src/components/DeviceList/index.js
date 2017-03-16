@@ -45,7 +45,7 @@ class DeviceList extends Component {
           dataSource={this.state.ds}
           renderRow={this.renderDevice}
           style={styles.container}
-          enableEmptySections={true}
+          enableEmptySections
         />
       </View>
     );
