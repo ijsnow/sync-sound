@@ -41,6 +41,20 @@
 		2DCD954D1E0B4F2C00145EB5 /* SyncSoundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SyncSoundTests.m */; };
 		2E2D10ED9B744969AC9B9932 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919BEACD5B004B70996F62C4 /* Entypo.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6B0767BB1E7EF2CF00FAA636 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767BA1E7EF2CF00FAA636 /* WebRTC.framework */; };
+		6B0767BC1E7EF3EB00FAA636 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767BA1E7EF2CF00FAA636 /* WebRTC.framework */; };
+		6B0767BD1E7EF3EB00FAA636 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767BA1E7EF2CF00FAA636 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B0767BF1E7EF42800FAA636 /* libRCTWebRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767AD1E7EF29900FAA636 /* libRCTWebRTC.a */; };
+		6B0767C11E7EF45900FAA636 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767C01E7EF45900FAA636 /* AVFoundation.framework */; };
+		6B0767C31E7EF46600FAA636 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767C21E7EF46600FAA636 /* AudioToolbox.framework */; };
+		6B0767C51E7EF47500FAA636 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767C41E7EF47500FAA636 /* CoreGraphics.framework */; };
+		6B0767C71E7EF47F00FAA636 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767C61E7EF47F00FAA636 /* GLKit.framework */; };
+		6B0767C91E7EF4A000FAA636 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767C81E7EF4A000FAA636 /* CoreAudio.framework */; };
+		6B0767CB1E7EF4A600FAA636 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767CA1E7EF4A600FAA636 /* CoreVideo.framework */; };
+		6B0767CD1E7EF4AF00FAA636 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767CC1E7EF4AF00FAA636 /* VideoToolbox.framework */; };
+		6B0767CF1E7EF4CD00FAA636 /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767CE1E7EF4CD00FAA636 /* libc.tbd */; };
+		6B0767D21E7EF4E800FAA636 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767D01E7EF4E800FAA636 /* libsqlite3.tbd */; };
+		6B0767D31E7EF4E800FAA636 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0767D11E7EF4E800FAA636 /* libstdc++.tbd */; };
 		6B0C426F1E6397130094D30D /* ConnectionManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C426E1E6397130094D30D /* ConnectionManagerBridge.m */; };
 		6B22978B1E667CEC003C789E /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B22978A1E667CEC003C789E /* EventEmitter.swift */; };
 		6B22978D1E667D11003C789E /* EventEmitterBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B22978C1E667D11003C789E /* EventEmitterBridge.m */; };
@@ -230,6 +244,13 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		6B0767AC1E7EF29900FAA636 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B0767991E7EF29900FAA636 /* RCTWebRTC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 35A2221F1CB493700015FD5C;
+			remoteInfo = RCTWebRTC;
+		};
 		6B0C42B01E63B1560094D30D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 573496C1D6F84FCDA798B386 /* RNVectorIcons.xcodeproj */;
@@ -252,6 +273,20 @@
 			remoteInfo = RCTText;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6B0767BE1E7EF3EB00FAA636 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6B0767BD1E7EF3EB00FAA636 /* WebRTC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -281,6 +316,18 @@
 		5DBC218ABD2F4253B2492713 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		66A583F2406E4B7DB5C57872 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		6B0767991E7EF29900FAA636 /* RCTWebRTC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebRTC.xcodeproj; path = "../node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj"; sourceTree = "<group>"; };
+		6B0767BA1E7EF2CF00FAA636 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "../node_modules/react-native-webrtc/ios/WebRTC.framework"; sourceTree = "<group>"; };
+		6B0767C01E7EF45900FAA636 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6B0767C21E7EF46600FAA636 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6B0767C41E7EF47500FAA636 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6B0767C61E7EF47F00FAA636 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		6B0767C81E7EF4A000FAA636 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6B0767CA1E7EF4A600FAA636 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		6B0767CC1E7EF4AF00FAA636 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		6B0767CE1E7EF4CD00FAA636 /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		6B0767D01E7EF4E800FAA636 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		6B0767D11E7EF4E800FAA636 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		6B0C426E1E6397130094D30D /* ConnectionManagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManagerBridge.m; sourceTree = "<group>"; };
 		6B22978A1E667CEC003C789E /* EventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
 		6B22978C1E667D11003C789E /* EventEmitterBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitterBridge.m; sourceTree = "<group>"; };
@@ -311,9 +358,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B0767D21E7EF4E800FAA636 /* libsqlite3.tbd in Frameworks */,
+				6B0767D31E7EF4E800FAA636 /* libstdc++.tbd in Frameworks */,
+				6B0767CF1E7EF4CD00FAA636 /* libc.tbd in Frameworks */,
+				6B0767CD1E7EF4AF00FAA636 /* VideoToolbox.framework in Frameworks */,
+				6B0767CB1E7EF4A600FAA636 /* CoreVideo.framework in Frameworks */,
+				6B0767C91E7EF4A000FAA636 /* CoreAudio.framework in Frameworks */,
+				6B0767C71E7EF47F00FAA636 /* GLKit.framework in Frameworks */,
+				6B0767C51E7EF47500FAA636 /* CoreGraphics.framework in Frameworks */,
+				6B0767C31E7EF46600FAA636 /* AudioToolbox.framework in Frameworks */,
+				6B0767C11E7EF45900FAA636 /* AVFoundation.framework in Frameworks */,
+				6B0767BF1E7EF42800FAA636 /* libRCTWebRTC.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
+				6B0767BC1E7EF3EB00FAA636 /* WebRTC.framework in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
@@ -322,6 +381,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				6B0767BB1E7EF2CF00FAA636 /* WebRTC.framework in Frameworks */,
 				9F05A6064EFC4F02AFEF83E7 /* libRNVectorIcons.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +530,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6B07679A1E7EF29900FAA636 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B0767AD1E7EF29900FAA636 /* libRCTWebRTC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B0767B91E7EF2A500FAA636 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B0767D01E7EF4E800FAA636 /* libsqlite3.tbd */,
+				6B0767D11E7EF4E800FAA636 /* libstdc++.tbd */,
+				6B0767CE1E7EF4CD00FAA636 /* libc.tbd */,
+				6B0767CC1E7EF4AF00FAA636 /* VideoToolbox.framework */,
+				6B0767CA1E7EF4A600FAA636 /* CoreVideo.framework */,
+				6B0767C81E7EF4A000FAA636 /* CoreAudio.framework */,
+				6B0767C61E7EF47F00FAA636 /* GLKit.framework */,
+				6B0767C41E7EF47500FAA636 /* CoreGraphics.framework */,
+				6B0767C21E7EF46600FAA636 /* AudioToolbox.framework */,
+				6B0767C01E7EF45900FAA636 /* AVFoundation.framework */,
+				6B0767BA1E7EF2CF00FAA636 /* WebRTC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6B0C42941E63B1560094D30D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +602,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				6B0767991E7EF29900FAA636 /* RCTWebRTC.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -544,6 +631,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6B0767B91E7EF2A500FAA636 /* Frameworks */,
 				13B07FAE1A68108700A75B9A /* SyncSound */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SyncSoundTests */,
@@ -611,6 +699,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				6B0767BE1E7EF3EB00FAA636 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -732,6 +821,10 @@
 				{
 					ProductGroup = 00C302E01ABCB9EE00DB3ED1 /* Products */;
 					ProjectRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
+				},
+				{
+					ProductGroup = 6B07679A1E7EF29900FAA636 /* Products */;
+					ProjectRef = 6B0767991E7EF29900FAA636 /* RCTWebRTC.xcodeproj */;
 				},
 				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
@@ -916,6 +1009,13 @@
 			fileType = archive.ar;
 			path = "libRCTAnimation-tvOS.a";
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B0767AD1E7EF29900FAA636 /* libRCTWebRTC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTWebRTC.a;
+			remoteRef = 6B0767AC1E7EF29900FAA636 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		6B0C42B11E63B1560094D30D /* libRNVectorIcons.a */ = {
@@ -1139,8 +1239,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 3SA95C9ZFH;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios/**";
 				INFOPLIST_FILE = SyncSound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios/**";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1161,8 +1263,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3SA95C9ZFH;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios/**";
 				INFOPLIST_FILE = SyncSound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios/**";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

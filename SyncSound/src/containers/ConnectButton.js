@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import {findPeers, stopFinding} from '../actions/connections';
+import {findPeers, stopFinding} from '../middleware/webrtc/action';
 
 import Button from '../components/Button';
 

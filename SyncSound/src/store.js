@@ -5,7 +5,8 @@ import createLogger from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
 import {persistStore, autoRehydrate} from 'redux-persist';
 
-import connectionMiddleware from './middleware/connections';
+// import connectionMiddleware from './middleware/connections';
+import webRTCMdw from './middleware/webrtc';
 
 import rootReducer from './reducers';
 
@@ -14,8 +15,9 @@ import rootReducer from './reducers';
 
 const middleware = applyMiddleware(
   ReduxThunk,
-  connectionMiddleware(),
-  // createLogger(),
+  // connectionMiddleware(),
+  webRTCMdw(),
+  createLogger(),
 );
 
 export default function getStore(data = {}) {
