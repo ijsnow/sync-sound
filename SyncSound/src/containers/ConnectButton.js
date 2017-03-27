@@ -2,8 +2,8 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {findPeers, stopFinding} from '../actions/connections';
-import {findPeers, stopFinding} from '../middleware/webrtc/action';
+// import {findPeers, stopFinding} from '../actions/connections';
+import {findPeers, stopFinding} from '../middleware/webrtc/actions';
 
 import Button from '../components/Button';
 
